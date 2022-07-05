@@ -1,0 +1,25 @@
+<div *ngIf="dataLoaded==false" class="spinner-border text-dark" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Car Id</th>
+            <th>Car Name</th>
+            <th>Brand Name</th>
+            <th>Color Name</th>
+            <th>Model Year</th>
+            <th>Daily Price</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let carDetail of carDetails">
+        <td>{{carDetail.id}}</td>
+        <td>{{carDetail.carName}}</td>
+        <td>{{carDetail.brandName}}</td>
+        <td>{{carDetail.colourName}}</td>
+        <td>{{carDetail.modelYear}}</td>
+        <td>{{carDetail.daliyPrice}}</td>
+        <td>{{carDetail.description}}</td>
+    </tr>
+</table>
