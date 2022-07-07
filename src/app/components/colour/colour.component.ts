@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Colour } from 'src/app/models/colour';
 import { ColourService } from 'src/app/services/colour.service';
 
@@ -11,7 +10,7 @@ import { ColourService } from 'src/app/services/colour.service';
 export class ColourComponent implements OnInit {
 
   colours:Colour[]=[];
-  dataloaded=false;
+  dataLoaded=false;
 
   constructor(private colourService:ColourService) { }
 
@@ -22,7 +21,7 @@ export class ColourComponent implements OnInit {
   getColours(){
     this.colourService.getColours().subscribe(response=>{
       this.colours=response.data;
-      this.dataloaded=true;
+      this.dataLoaded=true;
     })
   }
 

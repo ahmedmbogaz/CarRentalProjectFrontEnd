@@ -5,5 +5,5 @@ export interface CarDetail{
     colourName:string;
     modelYear:string;
     daliyPrice:number;
-    description:string;
+    description:number;
 }
