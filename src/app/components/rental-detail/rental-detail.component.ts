@@ -12,6 +12,7 @@ export class RentalDetailComponent implements OnInit {
   constructor(private rentalDetailService:RentalDetailService) { }
 
   rentalDetails:RentalDetail[]=[];
+  currentRentalDetail:RentalDetail;
   dataLoaded=false;
 
   ngOnInit(): void {
@@ -23,5 +24,17 @@ export class RentalDetailComponent implements OnInit {
       this.rentalDetails=response.data;
       this.dataLoaded=true;
     })
+  }
+
+  setCurrentRental(rentalDetail:RentalDetail){
+    this.currentRentalDetail=rentalDetail;
+  }
+
+  getCurrentRentalClass(rentalDetail:RentalDetail){
+    if (rentalDetail==this.currentRentalDetail) {
+      return "list-group-item active"
+    }else{
+      return "list-group-item"
+    }
   }
 }

@@ -1,23 +1,35 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-dark" role="status">
+<!-- <div *ngIf="dataLoaded==false" class="spinner-border text-dark" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
 <table>
     <thead>
         <tr>
-            <th>Rental Id</th>
-            <th>Car Name</th>
-            <th>Company Name</th>
+            <th>Brand Name</th>
+            <th>Colour Name</th>
+            <th>Model Year</th>
+            <th>Daliy Price</th>
+            <th>Description</th>
             <th>User Name</th>
             <th>Rent Date</th>
             <th>Return Date</th>
         </tr>
     </thead>
     <tr *ngFor="let rentalDetail of rentalDetails">
-        <td>{{rentalDetail.id}}</td>
-        <td>{{rentalDetail.carName}}</td>
-        <td>{{rentalDetail.companyName}}</td>
+        <td>{{rentalDetail.brandName}}</td>
+        <td>{{rentalDetail.colourName}}</td>
+        <td>{{rentalDetail.modelYear}}</td>
+        <td>{{rentalDetail.daliyPrice}}</td>
+        <td>{{rentalDetail.description}}</td>
         <td>{{rentalDetail.userName}}</td>
         <td>{{rentalDetail.rentDate}}</td>
         <td>{{rentalDetail.returnDate}}</td>
     </tr>
-</table>
+</table> -->
+
+<ul class="list-group">
+    <li id="caption" class="list-group-item"> <h5>Kiralanmış Araçlar</h5></li>
+    <li [class]="getCurrentRentalClass(rentalDetail)"
+    (click)="setCurrentRental(rentalDetail)" 
+    *ngFor="let rentalDetail of rentalDetails">{{rentalDetail.brandName}}
+  </li>
+  </ul>

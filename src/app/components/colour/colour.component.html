@@ -1,15 +1,8 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-dark" role="status">
-    <span class="visually-hidden">Loading...</span>
-</div>
-<table >
-    <thead>
-        <tr>
-            <th>Colour Id</th>
-            <th>Colour Name</th>
-            
-        </tr>
-    </thead><tr *ngFor="let colour of colours">
-        <td>{{colour.id}}</td>
-        <td>{{colour.colourName}}</td>
-    </tr>
-</table>
+<ul class="list-group">
+    <li [class]="getAllColourClass()" routerLink="/cars"><strong>RENKLER</strong></li>
+    <li (click)="setCurrentColour(colour)" 
+    routerLink="/cars/colour/{{colour.id}}"
+    *ngFor="let colour of colours" 
+    [class]="getCurrentColourClass(colour)">{{colour.colourName}}</li>
+</ul>
+<h5 *ngIf="currentColour">{{currentColour.colourName}} seçtiniz<h5>

@@ -1,11 +1,34 @@
 <div class="container">
   <app-navi></app-navi>
+  <div class="row" style="margin-top: 20px;">
+      <div class="col-md-3">
+          <h3 id="filtre">Filtrele</h3>
+          <app-brand></app-brand><br>
+          <app-colour></app-colour> <br>
+          <app-rental-detail></app-rental-detail>
+          <br><br><br>
+      </div>    
+      <div class="col-md-9">
+          <router-outlet></router-outlet>     
+      </div>
+  </div>  
+</div>
+
+<!-- <div class="container">
+  <app-navi></app-navi>
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
       <app-brand></app-brand>
+      <app-colour></app-colour>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-9">
       <router-outlet></router-outlet>
     </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-md-12 mt-5">
+      <app-rental-detail></app-rental-detail>
+    </div>
+  </div>
+  
+</div> -->
