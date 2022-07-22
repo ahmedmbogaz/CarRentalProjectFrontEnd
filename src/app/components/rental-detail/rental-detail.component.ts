@@ -9,32 +9,30 @@ import { RentalDetailService } from 'src/app/services/rental-detail.service';
 })
 export class RentalDetailComponent implements OnInit {
 
-  constructor(private rentalDetailService:RentalDetailService) { }
-
   rentalDetails:RentalDetail[]=[];
-  currentRentalDetail:RentalDetail;
-  dataLoaded=false;
+  currentRental:RentalDetail;
+  constructor(private rentalDetailService:RentalDetailService) { }
 
   ngOnInit(): void {
     this.getRentalDetail();
   }
 
-  getRentalDetail(){
+  getRentalDetail(){  
     this.rentalDetailService.getRentalDetail().subscribe(response=>{
-      this.rentalDetails=response.data;
-      this.dataLoaded=true;
+      this.rentalDetails=response.data
     })
   }
 
-  setCurrentRental(rentalDetail:RentalDetail){
-    this.currentRentalDetail=rentalDetail;
+  setCurrentRental(rentalDetails:RentalDetail){
+    this.currentRental=rentalDetails;
   }
 
-  getCurrentRentalClass(rentalDetail:RentalDetail){
-    if (rentalDetail==this.currentRentalDetail) {
+  getCurrentRentalClass(rentalDetails:RentalDetail){
+    if (rentalDetails==this.currentRental) {
       return "list-group-item active"
     }else{
       return "list-group-item"
     }
   }
+
 }
