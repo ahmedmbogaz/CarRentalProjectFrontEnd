@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CarDetail } from 'src/app/models/carDetail';
 import { CarDetailService } from 'src/app/services/car-detail.service';
 
 @Component({
@@ -11,25 +10,25 @@ import { CarDetailService } from 'src/app/services/car-detail.service';
 
 export class OneCarDetailComponent implements OnInit {
 
-  oneCarDetail:CarDetail[] = [];
+  // oneCarDetail:CarDetail[] = [];
   dataLoaded =  false;
   constructor(
     private carDetailService:CarDetailService,
     private activatedRoute:ActivatedRoute
   ) { }
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params=>{
-      if(params["carId"]){
-        this.getCarDetailByCarId(params["carId"])
-      }
-    })
+    // this.activatedRoute.params.subscribe(params=>{
+    //   if(params["carId"]){
+    //     this.getCarDetailByCarId(params["carId"])
+    //   }
+    // })
   }
 
-  getCarDetailByCarId(carId:number){
-    this.carDetailService.getCarDetailByCarId(carId).subscribe(response => {
-      this.oneCarDetail = response.data;
-      console.log(this.oneCarDetail[0])
-      this.dataLoaded = true;
-    })
-  }
+  // getCarDetailByCarId(carId:number){
+  //   this.carDetailService.getCarDetailByCarId(carId).subscribe(response => {
+  //     this.oneCarDetail = response.data;
+  //     console.log(this.oneCarDetail[0])
+  //     this.dataLoaded = true;
+  //   })
+  // }
 }

@@ -9,7 +9,7 @@ import { RentalDetail } from '../models/rentalDetail';
 })
 export class RentalDetailService {
 
-  apiUrl="https://localhost:44394/api/rentals/getdetail"
+  apiUrl="https://localhost:44394/api/rentals/getrentaldetail"
   constructor(private httpClient:HttpClient) { }
 
   getRentalDetail():Observable<ListResponseModel<RentalDetail>>{

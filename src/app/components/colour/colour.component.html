@@ -1,16 +1,15 @@
-<ul class="list-group"  >
-    <li [class]="getAllColourClass()" routerLink="/cars"><strong>RENKLER</strong></li>
-    <div class="mb-3">
-        <label for="filterText" class="form-label"></label>
-        <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="renk adını giriniz">
-      </div>
-      <div *ngIf="filterText.length>2" class="allert alert-success">
-        {{filterText}} aradınız.
-      </div>
-    <li routerLink="/cars/colour/{{colour.id}}"
-    [class]="getCurrentColourClass(colour)"
-    (click)="setCurrentColour(colour)" 
-    *ngFor="let colour of colours 
-    |filterColour:filterText">{{colour.colourName}}
+<ul class="list-group">
+  <li id="caption" class="list-group-item">
+    <table>
+      <tr>
+        <td>Renk</td>
+        <td><input [(ngModel)]="filterColourText" width="100px" placeholder="Ara..." type="text"></td>
+      </tr>
+    </table>
+  <li 
+  routerLink="/cars/colour/{{colour.id}}"
+  [class]="getCurrentColourClass(colour)"
+  (click)="setCurrentColour(colour)" 
+  *ngFor="let colour of colours |filterColour:filterColourText">{{colour.colourName}}
+  </li>
 </ul>
-<h5 *ngIf="currentColour">{{currentColour.colourName}} seçtiniz<h5>

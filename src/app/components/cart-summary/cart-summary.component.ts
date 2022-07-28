@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CarDetail } from 'src/app/models/carDetail';
+import { Car } from 'src/app/models/car';
 import { CartItem } from 'src/app/models/cartItem';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -12,9 +13,10 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartSummaryComponent implements OnInit {
 
   cartItems:CartItem[]=[];
-
+  currentOpen:Car;
   constructor(
     private cartService:CartService,
+    private activatedRoute:ActivatedRoute,
     private toastrService:ToastrService,
     ) { }
 
@@ -22,14 +24,26 @@ export class CartSummaryComponent implements OnInit {
    this.getCart();
   }
 
+  RunMethodByActivatedRoute(){
+    this.activatedRoute.params.subscribe((params)=>{
+
+    })
+  }
+
+  // setCurrentOpen(car:Car){
+  //   this.currentOpen=car;
+  // }
   getCart(){
     this.cartItems=this.cartService.list();
   }
 
-  removeFromCart(carDetail:CarDetail){
-    this.cartService.removeFromCart(carDetail);
-    this.toastrService.info(carDetail.carName+" "+ "Sepetten Çıkarıldı","Silme işlemi gerçekleşti")
+  removeFromCart(car:Car){
+    this.cartService.removeFromCart(car);
+    this.toastrService.info(car.carName+" "+ "Sepetten Çıkarıldı","Silme işlemi gerçekleşti") 
   }
 
+  // addToCarDetail(currentOpen:Car){
+  //   this.cartService.addToCarDetail(currentOpen);
+  // }
 
 }

@@ -1,3 +1,55 @@
+<div *ngIf="dataLoaded==false" class="spinner-border" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+<table style="background-color: lightblue;border-radius: 10px;">
+  <tr>
+    <td><select [(ngModel)]="filterBrandText"  class="form-select" style="width: 250px;">
+        <option  value=0 >Marka Seç</option>
+        <option *ngFor="let brand of brands" [value]="brand.id" [selected]="getSelectedBrand(brand.id)">{{brand.brandName}}</option>
+      </select>
+    </td>
+    <td><select [(ngModel)]="filterColourText" class="form-select" style="width: 250px;">
+        <option value=0 >Renk Seç</option>
+        <option *ngFor="let colour of colours" [value]="colour.id" [selected]="getSelectedColour(colour.id)">{{colour.colourName}}</option>
+      </select></td>
+    <td><button 
+      routerLink="/cars/brand/{{filterBrandText}}/colour/{{filterColourText}}"
+      [(ngModel)]="filterBrandText" [(ngModel)]="filterColourText" type="button" class="btn btn-warning">FİLTRELE</button>
+    </td>
+  </tr>
+</table>
+
+
+
+<div class="mb-3">
+  <label for="filterText" class="form-label">
+    <h3>Araba Ara</h3>
+  </label>
+  <input [(ngModel)]="filterText" type="text" class="form-control" id="filterText" placeholder="Ara">
+</div>
+
+<table class="table">
+  <thead *ngIf="dataLoaded==true">
+    <tr class="table-dark">
+      <th scope="col">Ad</th>
+      <th scope="col">Marka</th>
+      <th scope="col">Renk</th>
+      <th scope="col">Fiyat</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let car of cars |filterCar:filterText ">
+      <td routerLink="/cars/cardetail/{{car.id}} " style="cursor: pointer;" >{{car.carName |titlecase}}</td>
+      <td>{{car.brandName|titlecase}}</td>
+      <td>{{car.colourName|titlecase}}</td>
+      <td>{{car.daliyPrice|currency:"₺"}}</td>
+      <button style="background-color:rgb(184, 231, 184);color: black;" (click)="addToCart(car)" type="button" class="alert alert-primary"> Sepete Ekle</button>
+    </tr>
+  </tbody>
+</table>
+
 <!-- <div *ngIf="dataLoaded==false" class="spinner-border" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
